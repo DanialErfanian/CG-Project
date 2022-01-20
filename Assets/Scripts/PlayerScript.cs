@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Test1");
     }
 
-    void FixedUpdates()
+    void FixedUpdate()
     {
       Vector3 movement = new Vector3(movementX, 0.0f, movementY);
       rb.AddForce(movement);
