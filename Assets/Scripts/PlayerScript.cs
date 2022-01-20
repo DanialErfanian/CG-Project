@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+    public float speed = 0;
+
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -31,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
       Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-      rb.AddForce(movement);
+      rb.AddForce(movement * speed);
       Debug.Log("Test2");
       Debug.Log(movementX);
       Debug.Log(movementY);
