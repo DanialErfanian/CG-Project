@@ -6,8 +6,10 @@ using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static int BOX_COUNTS = 18; 
     public float speed = 0;
-    public TextMeshProUGUI score; 
+    public TextMeshProUGUI score;
+    public GameObject winTextObject;  
     private Rigidbody rb;
     private int count; 
     private float movementX;
@@ -19,6 +21,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 	count = 0;
 	SetCountText(); 
+	winTextObject.SetActive(false); 
     }
 
     // Update is called once per frame
@@ -38,6 +41,12 @@ public class PlayerScript : MonoBehaviour
     void SetCountText()
     {
 	    score.text = "Score: " + count.ToString(); 
+
+	    if (count >= BOX_COUNTS) 
+	    {
+		    winTextObject.SetActive(true); 
+	    }
+
     }
 
     void FixedUpdate()
