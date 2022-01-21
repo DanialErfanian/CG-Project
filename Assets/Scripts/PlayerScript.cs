@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 30;
         rb = GetComponent<Rigidbody>();
     }
 
