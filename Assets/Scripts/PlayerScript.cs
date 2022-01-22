@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro; 
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-    public static int BOX_COUNTS = 18; 
+    public static int BOX_COUNTS = 18;
     public float speed = 0;
     public TextMeshProUGUI score;
-    public GameObject winTextObject;  
+    public GameObject winTextObject;
     private Rigidbody rb;
-    private int count; 
+    private int count;
     private float movementX;
     private float movementY;
     // Start is called before the first frame update
@@ -19,9 +19,9 @@ public class PlayerScript : MonoBehaviour
     {
         Application.targetFrameRate = 30;
         rb = GetComponent<Rigidbody>();
-	count = 0;
-	SetCountText(); 
-	winTextObject.SetActive(false); 
+	      count = 0;
+        SetCountText();
+	      winTextObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,11 +40,11 @@ public class PlayerScript : MonoBehaviour
 
     void SetCountText()
     {
-	    score.text = "Score: " + count.ToString(); 
+	    score.text = "Score: " + count.ToString();
 
-	    if (count >= BOX_COUNTS) 
+	    if (count >= BOX_COUNTS)
 	    {
-		    winTextObject.SetActive(true); 
+		    winTextObject.SetActive(true);
 	    }
 
     }
@@ -62,9 +62,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            GetComponents<AudioSource>()[1].Play();
             other.gameObject.SetActive(false);
-	    count = count + 1;
-	    SetCountText(); 
+	          count = count + 1;
+	          SetCountText();
         }
     }
 }
