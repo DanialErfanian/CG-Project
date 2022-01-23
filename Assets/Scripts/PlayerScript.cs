@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    public static int BOX_COUNTS = 18;
+    public static int BOX_COUNTS = 100;
     public float speed = 0;
     public TextMeshProUGUI score;
     public GameObject winTextObject;
@@ -16,6 +17,9 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BOX_COUNTS = GameObject.FindGameObjectsWithTag("PickUp").Length;
+        Debug.Log("BOX_COUNTS");
+        Debug.Log(BOX_COUNTS);
         Application.targetFrameRate = 30;
 	      count = 0;
         SetCountText();
@@ -36,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 	    if (count >= BOX_COUNTS)
 	    {
 		    winTextObject.SetActive(true);
+        SceneManager.LoadScene(0);
 	    }
 
     }
