@@ -10,7 +10,6 @@ public class PlayerScript : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI score;
     public GameObject winTextObject;
-    private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
@@ -18,7 +17,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
-        rb = GetComponent<Rigidbody>();
 	      count = 0;
         SetCountText();
 	      winTextObject.SetActive(false);
@@ -30,12 +28,6 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-    }
 
     void SetCountText()
     {
@@ -48,11 +40,6 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void FixedUpdate()
-    {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
