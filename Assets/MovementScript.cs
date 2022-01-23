@@ -17,6 +17,7 @@ public class MovementScript : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical"); 
         Vector3 directon  = new Vector3(horizontal, 0f, vertical).normalized;
         directon = cameraTransform.TransformDirection(directon);
+        directon[1] = 0f;
         if (directon.magnitude >= 0.1f){
             controller.Move(directon * speed * Time.deltaTime);
         }
